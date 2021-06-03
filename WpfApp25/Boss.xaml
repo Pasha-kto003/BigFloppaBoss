@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApp25.Boss"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp25"
+        mc:Ignorable="d"
+        Title="Boss" Height="500" Width="800">
+    <Grid>
+        <Canvas Name="myCanvas" Focusable="True" Background="White"  KeyUp="KeyIsUp" KeyDown="KeyIsDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Name="liveBoss" Foreground="White" FontSize="14" 
+               FontWeight="ExtraBold" 
+               Content="Босс. Жизни босса" Grid.Column="0">
+                </Label>
+            </Grid>
+            <Rectangle Name="player" Fill="Gray" Height="65" Width="55" Canvas.Left="381" Canvas.Top="394"/>
+        </Canvas>
+    </Grid>
+</Window>
