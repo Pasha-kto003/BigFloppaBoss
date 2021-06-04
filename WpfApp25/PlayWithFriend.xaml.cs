@@ -33,6 +33,7 @@ namespace WpfApp25
         DispatcherTimer gameTimer = new DispatcherTimer();
         ImageBrush playerSkin = new ImageBrush();
         ImageBrush friendSkin = new ImageBrush();
+        ImageBrush canvasSkin = new ImageBrush();
 
         public PlayWithFriend()
         {
@@ -40,11 +41,13 @@ namespace WpfApp25
             gameTimer.Tick += GameLoop;
             gameTimer.Interval = TimeSpan.FromMilliseconds(30);
             gameTimer.Start();
-            gameTimer.Stop();
+            //gameTimer.Stop();
             playerSkin.ImageSource = new BitmapImage(new Uri("Images/Pasha (1).png", UriKind.Relative));
             friendSkin.ImageSource = new BitmapImage(new Uri("Images/player.png", UriKind.Relative));
+            canvasSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
             player.Fill = playerSkin;
             friend.Fill = friendSkin;
+            myCanvas.Background = canvasSkin;
             myCanvas.Focus();
             MakeEnemies(60);
         }
@@ -188,28 +191,7 @@ namespace WpfApp25
 
             }
         } //конец цикла
-        private void KeyIsDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Left)
-            {
-                goLeft = true;
-            }
-
-            if (e.Key == Key.A)
-            {
-                goLeftFrnd = true;
-            }
-
-            if (e.Key == Key.D)
-            {
-                goRightFrnd = true;
-            }
-
-            if (e.Key == Key.Right)
-            {
-                goRight = true;
-            }
-        }
+        
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
@@ -250,8 +232,9 @@ namespace WpfApp25
 
             if (e.Key == Key.Enter && gameOver == true)
             {
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                Application.Current.Shutdown();
+                Menu menu = new Menu();
+                menu.Show();
+                Close();
             }
         }
 
@@ -261,6 +244,29 @@ namespace WpfApp25
             Canvas.SetTop(enemyBullet, y);
             Canvas.SetLeft(enemyBullet, x);
             myCanvas.Children.Add(enemyBullet);
+        }
+
+        private void myCanvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left)
+            {
+                goLeft = true;
+            }
+
+            if (e.Key == Key.A)
+            {
+                goLeftFrnd = true;
+            }
+
+            if (e.Key == Key.D)
+            {
+                goRightFrnd = true;
+            }
+
+            if (e.Key == Key.Right)
+            {
+                goRight = true;
+            }
         }
 
         private void MakeEnemies(int limit)
@@ -304,7 +310,7 @@ namespace WpfApp25
         {
             gameOver = true;
             gameTimer.Stop();
-            enemiesLeft.Content += " " + message + " Нажмите Enter чтобы снова играть";
+            enemiesLeft.Content = " " + message + " Нажмите Enter чтобы снова играть";
         }
     }
 }

@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
         Title="PlayWithFriend" Height="500" Width="800">
-    <Canvas x:Name="myCanvas">
+    <Canvas x:Name="myCanvas" KeyUp="KeyIsUp" KeyDown="myCanvas_KeyDown" Focusable="True">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Name="enemiesLeft" Foreground="Black" FontSize="14" 
+            <Label Name="enemiesLeft" Foreground="White" FontSize="14" 
                FontWeight="ExtraBold" 
                Content=" Игра с другом. Осталось живых врагов: 0" Grid.Column="0">
             </Label>

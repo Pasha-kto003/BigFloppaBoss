@@ -28,12 +28,21 @@ namespace WpfApp25
         {
             PlayWithFriend playWithFriend = new PlayWithFriend();
             playWithFriend.Show();
+            Close();
         }
 
         private void SimpleGame_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            Close();
+        }
+
+        private void BossGame_Click(object sender, RoutedEventArgs e)
+        {
+            Boss boss = new Boss();
+            boss.Show();
+            Close();
         }
     }
 }

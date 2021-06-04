@@ -132,19 +132,19 @@ namespace WpfApp25
 
             if (bossHealth < 900)
             {
-                bossSpeed = 11;
+                bossSpeed = 10;
             }
             if (bossHealth < 800)
             {
-                bossSpeed = 14;
+                bossSpeed = 12;
             }
             if (bossHealth < 700)
             {
-                bossSpeed = 16;
+                bossSpeed = 13;
             }
             if (bossHealth < 400)
             {
-                bossSpeed = 20;
+                bossSpeed = 14;
             }
 
             if (bossHealth < 1)
@@ -193,8 +193,9 @@ namespace WpfApp25
             }
             if (e.Key == Key.Enter && gameOver == true)
             {
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                Application.Current.Shutdown();
+                Menu menu = new Menu();
+                menu.Show();
+                Close();
             }
         }
         private void BossBulletMaker(double x, double y)
@@ -223,6 +224,7 @@ namespace WpfApp25
         }
         private void ShowGameOver(string message)
         {
+            
             gameOver = true;
             gameTimer.Stop();
             liveBoss.Content = " " + message + " Нажмите Enter чтобы снова играть";

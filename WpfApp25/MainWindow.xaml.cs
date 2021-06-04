@@ -148,6 +148,7 @@ namespace WpfApp25
                 ShowGameOver("Поздравляю вы выиграли!");
                 Level2 lv = new Level2();
                 lv.Show();
+                Close();
               
             }
         } //конец цикла
@@ -217,16 +218,16 @@ namespace WpfApp25
                 switch (ImagesOfEnemy)
                 {
                     case 1:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/Pasha1.png"));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha1.png", UriKind.Relative));
                         break;
                     case 2:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/Pasha21.png"));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha21.png", UriKind.Relative));
                         break;
                     case 3:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/Pasha3.png"));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha3.png", UriKind.Relative));
                         break;
                     case 4:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/Pasha_4.png"));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha_4.png", UriKind.Relative));
                         break;                                         
                 }
             }

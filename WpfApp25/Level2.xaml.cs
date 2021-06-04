@@ -158,9 +158,7 @@ namespace WpfApp25
                 ShowGameOver("Поздравляю вы выиграли!");
                 Boss bs = new Boss();
                 bs.Show();
-                //Level2 lv = new Level2();
-                //lv.Show();
-                
+                Close();          
             }
         } //конец цикла
         private void KeyIsDown(object sender, KeyEventArgs e)

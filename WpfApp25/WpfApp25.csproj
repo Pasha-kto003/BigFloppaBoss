@@ -123,25 +123,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\player.png" />
+    <EmbeddedResource Include="Images\player.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pasha %281%29.png" />
+    <EmbeddedResource Include="Images\Pasha %281%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pasha1.png" />
+    <EmbeddedResource Include="Images\Pasha1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pasha21.png" />
+    <EmbeddedResource Include="Images\Pasha21.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pasha3.png" />
+    <EmbeddedResource Include="Images\Pasha3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Pasha_4.png" />
+    <EmbeddedResource Include="Images\Pasha_4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\PSM_V69_D182_Small_magellanic_cloud_and_its_variable_stars.png" />
+    <EmbeddedResource Include="Images\PSM_V69_D182_Small_magellanic_cloud_and_its_variable_stars.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\MyShip_-3000.png">
@@ -149,7 +163,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\BIG BOSS.png" />
+    <EmbeddedResource Include="Images\BIG BOSS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\SpaceForGame.png">
