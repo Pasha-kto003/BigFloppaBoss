@@ -53,7 +53,7 @@ namespace WpfApp25
         private void GameLoop(object sender, EventArgs e)
         {
             Rect playerHitBox = new Rect(Canvas.GetLeft(player), Canvas.GetTop(player), player.Width, player.Height);
-            liveBoss.Content = "Осталось всего пришельцев: " + bossHealth;
+            liveBoss.Content = "Осталось здоровья у босса: " + bossHealth;
             if (goLeft == true && Canvas.GetLeft(player) > 0)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) - 10);
@@ -103,12 +103,18 @@ namespace WpfApp25
                 if (x is Rectangle && (string)x.Tag == "boss")
                 {
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + bossSpeed);
+                    
 
-                    if (Canvas.GetLeft(x) > 820)
+                    if (Canvas.GetLeft(x) > 820) // условие перемещения шлеппы
                     {
                         Canvas.SetLeft(x, -80);
-                        Canvas.SetTop(x, Canvas.GetTop(x) + (x.Height + 10));
+                        //Canvas.SetTop(x, Canvas.GetTop(x) + (x.Height + 10));
                     }
+                    //else
+                    //{
+                    //    Canvas.SetLeft(x, -80);
+                    //}
+                    
                     Rect bossHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
                     if (playerHitBox.IntersectsWith(bossHitBox))
                     {
@@ -153,7 +159,7 @@ namespace WpfApp25
                 MessageBox.Show("Вы прошли игру (Не один большой Шлеппа русский кот не пострадал)");
             }
 
-            foreach (Rectangle i in itemsToRemove) //решить с ним проблему
+            foreach (Rectangle i in itemsToRemove) /*//решить с ним проблему*/
             {
                 if (bossHealth < 1)
                 {
@@ -214,13 +220,15 @@ namespace WpfApp25
         private void MakeBoss(int limit)
         {
             int left = 0;
+            int right = 0;
             totalBosses = limit;
             for (int i = 0; i < limit; i++)
             {
                 ImageBrush bossSkin = new ImageBrush();
                 Rectangle newBoss = new Rectangle { Tag = "boss", Height = 100, Width = 200, Fill = bossSkin };
                 Canvas.SetTop(newBoss, 1);
-                Canvas.SetLeft(newBoss, left);
+                Canvas.SetLeft(newBoss, left); //направление большого шлеппы влево и вниз
+                //Canvas.SetRight(newBoss, right);
                 myCanvas.Children.Add(newBoss);
                 left -= 1;
                 bossSkin.ImageSource = new BitmapImage(new Uri("Images/bigfloppa.png", UriKind.Relative));
@@ -228,8 +236,7 @@ namespace WpfApp25
 
         }
         private void ShowGameOver(string message)
-        {
-            
+        {            
             gameOver = true;
             gameTimer.Stop();
             liveBoss.Content = " " + message + " Нажмите Enter чтобы снова играть";
