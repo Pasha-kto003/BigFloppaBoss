@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
-        Title="Boss" Height="500" Width="800">
+        Title="Boss" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Canvas Name="myCanvas" Focusable="True" Background="White"  KeyUp="KeyIsUp" KeyDown="KeyIsDown">
             <Grid>

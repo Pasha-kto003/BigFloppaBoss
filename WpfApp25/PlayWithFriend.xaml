@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
-        Title="PlayWithFriend" Height="500" Width="800">
+        Title="PlayWithFriend" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Canvas x:Name="myCanvas" KeyUp="KeyIsUp" KeyDown="myCanvas_KeyDown" Focusable="True">
         <Grid>
             <Grid.ColumnDefinitions>

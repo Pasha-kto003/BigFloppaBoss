@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
-        Title="Звездные бои" Height="500" Width="800">
+        Title="Звездные бои" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Canvas Name="myCanvas" Focusable="True" Background="DarkBlue"  KeyUp="KeyIsUp" KeyDown="KeyIsDown">
         <Grid>
             <Grid.ColumnDefinitions>

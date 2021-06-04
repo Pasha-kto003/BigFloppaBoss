@@ -150,6 +150,7 @@ namespace WpfApp25
             if (bossHealth < 1)
             {
                 ShowGameOver("Вы прошли игру");
+                MessageBox.Show("Вы прошли игру (Не один большой Шлеппа русский кот не пострадал)");
             }
 
             foreach (Rectangle i in itemsToRemove) //решить с ним проблему
@@ -187,9 +188,13 @@ namespace WpfApp25
             if (e.Key == Key.Space)
             {
                 Rectangle newBullet = new Rectangle { Tag = "bullet", Height = 20, Width = 5, Fill = Brushes.Orange, Stroke = Brushes.Red };
+                Rectangle newBullet2 = new Rectangle { Tag = "bullet", Height = 20, Width = 5, Fill = Brushes.Orange, Stroke = Brushes.Red };
+                Canvas.SetTop(newBullet2, Canvas.GetTop(player) - newBullet2.Height);
+                Canvas.SetLeft(newBullet2, Canvas.GetLeft(player) + player.Width / 2 + 10);
                 Canvas.SetTop(newBullet, Canvas.GetTop(player) - newBullet.Height);
-                Canvas.SetLeft(newBullet, Canvas.GetLeft(player) + player.Width / 2);
+                Canvas.SetLeft(newBullet, Canvas.GetLeft(player) + player.Width / 2 - 10);
                 myCanvas.Children.Add(newBullet);
+                myCanvas.Children.Add(newBullet2);
             }
             if (e.Key == Key.Enter && gameOver == true)
             {
