@@ -44,7 +44,7 @@ namespace WpfApp25
             playerSkin.ImageSource = new BitmapImage(new Uri("Images/MyShip_-3000.png", UriKind.Relative));
             player.Fill = playerSkin;
             myCanvas.Background = myCanvasSkin;
-            myCanvasSkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/PSM_V69_D182_Small_magellanic_cloud_and_its_variable_stars.png"));
+            myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/PSM_V69_D182_Small_magellanic_cloud_and_its_variable_stars.png", UriKind.Relative));
             myCanvas.Focus();
             MakeEnemies(60);
         }
