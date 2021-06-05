@@ -121,6 +121,10 @@ namespace WpfApp25
                         ShowGameOver("Пришельцы захватили мир!!");
                     }
                 }
+                //else
+                //{
+                //    Canvas.SetLeft(x, Canvas.GetLeft(x) - bossSpeed);
+                //}
                 if (x is Rectangle && (string)x.Tag == "bossBullet")
                 {
                     Canvas.SetTop(x, Canvas.GetTop(x) + 10); //скорость пули босса
@@ -138,7 +142,10 @@ namespace WpfApp25
 
             if (bossHealth < 900)
             {
+                Random random = new Random();
                 bossSpeed = 10;
+                BossBulletMaker(random.Next(0, 500), random.Next(3, 10));
+
             }
             if (bossHealth < 800)
             {
@@ -151,6 +158,8 @@ namespace WpfApp25
             if (bossHealth < 400)
             {
                 bossSpeed = 14;
+                Random random = new Random();
+                BossBulletMaker(random.Next(0, 500), random.Next(3, 10));
             }
 
             if (bossHealth < 1)
