@@ -42,9 +42,9 @@ namespace WpfApp25
             gameTimer.Start();
             //gameTimer.Stop();
             playerSkin.ImageSource = new BitmapImage(new Uri("Images/MyShip_-3000.png", UriKind.Relative));
-            myCanvas.Background = myCanvasSkin;
             myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
             player.Fill = playerSkin;
+            myCanvas.Background = myCanvasSkin;
             myCanvas.Focus();
             MakeBoss(1);
 
@@ -110,21 +110,7 @@ namespace WpfApp25
                         Canvas.SetLeft(x, -80);
                         //Canvas.SetTop(x, Canvas.GetTop(x) + (x.Height + 10));
                     }
-                    //else
-                    //{
-                    //    Canvas.SetLeft(x, -80);
-                    //}
-                    
-                    Rect bossHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-                    if (playerHitBox.IntersectsWith(bossHitBox))
-                    {
-                        ShowGameOver("Пришельцы захватили мир!!");
-                    }
                 }
-                //else
-                //{
-                //    Canvas.SetLeft(x, Canvas.GetLeft(x) - bossSpeed);
-                //}
                 if (x is Rectangle && (string)x.Tag == "bossBullet")
                 {
                     Canvas.SetTop(x, Canvas.GetTop(x) + 10); //скорость пули босса
@@ -142,10 +128,7 @@ namespace WpfApp25
 
             if (bossHealth < 900)
             {
-                Random random = new Random();
-                bossSpeed = 10;
-                BossBulletMaker(random.Next(0, 500), random.Next(3, 10));
-
+                bossSpeed = 11;
             }
             if (bossHealth < 800)
             {
@@ -154,12 +137,32 @@ namespace WpfApp25
             if (bossHealth < 700)
             {
                 bossSpeed = 13;
+                bulletTimer -= 3;
+                if (bulletTimer < 0)
+                {
+                    Random random = new Random();
+                    BossBulletMaker(random.Next(0, 130), random.Next(3, 10));
+                    BossBulletMaker(random.Next(0, 280), random.Next(3, 10));
+                    BossBulletMaker(random.Next(0, 300), random.Next(3, 10));
+                    BossBulletMaker(random.Next(500, 740), random.Next(3, 10));
+                    bulletTimer = bulletTimerLimit;
+                }
             }
             if (bossHealth < 400)
             {
-                bossSpeed = 14;
-                Random random = new Random();
-                BossBulletMaker(random.Next(0, 500), random.Next(3, 10));
+                bulletTimer -= 3;
+                if (bulletTimer < 0)
+                {
+                    Random random = new Random();
+                    BossBulletMaker(random.Next(100, 400), random.Next(3, 10));
+                    BossBulletMaker(random.Next(150, 450), random.Next(3, 10));
+                    BossBulletMaker(random.Next(180, 480), random.Next(3, 10));
+                    BossBulletMaker(random.Next(250, 500), random.Next(3, 10));
+                    BossBulletMaker(random.Next(300, 530), random.Next(3, 10));
+                    BossBulletMaker(random.Next(320, 540), random.Next(3, 10));
+                    BossBulletMaker(random.Next(500, 700), random.Next(3, 10));
+                    bulletTimer = bulletTimerLimit;
+                }
             }
 
             if (bossHealth < 1)
@@ -229,7 +232,6 @@ namespace WpfApp25
         private void MakeBoss(int limit)
         {
             int left = 0;
-            int right = 0;
             totalBosses = limit;
             for (int i = 0; i < limit; i++)
             {

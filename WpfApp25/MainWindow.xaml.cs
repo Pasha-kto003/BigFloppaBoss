@@ -23,13 +23,11 @@ namespace WpfApp25
         int bulletTimer = 0;
         int bulletTimerLimit = 90;
         int totalEnemies = 0;
-        int totalFriends = 1;
         int enemySpeed = 6;
         bool gameOver = false;
         DispatcherTimer gameTimer = new DispatcherTimer();
         ImageBrush playerSkin = new ImageBrush();
         ImageBrush myCanvasSkin = new ImageBrush();
-        //ImageBrush friendSkin = new ImageBrush();
 
         public MainWindow()
         {
@@ -40,7 +38,6 @@ namespace WpfApp25
             playerSkin.ImageSource = new BitmapImage(new Uri("Images/MyShip_-3000.png", UriKind.Relative));
             myCanvas.Background = myCanvasSkin;
             myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
-            //friendSkin.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/player.png"));
             player.Fill = playerSkin;
             myCanvas.Focus();
             MakeEnemies(40);
@@ -218,16 +215,16 @@ namespace WpfApp25
                 switch (ImagesOfEnemy)
                 {
                     case 1:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha1.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien1.png", UriKind.Relative));
                         break;
                     case 2:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha21.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien2.png", UriKind.Relative));
                         break;
                     case 3:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha3.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien3.png", UriKind.Relative));
                         break;
                     case 4:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha_4.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien4.png", UriKind.Relative));
                         break;                                         
                 }
             }

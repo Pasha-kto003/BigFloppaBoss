@@ -21,7 +21,6 @@ namespace WpfApp25
     public partial class Level2 : Window
     {
         bool goLeft, goRight;
-        bool goLeftFrnd, goRightFrnd;
         List<Rectangle> itemsToRemove = new List<Rectangle>();
         int ImagesOfEnemy = 0;
         int bulletTimer = 0;
@@ -67,9 +66,9 @@ namespace WpfApp25
             {
                 EnemyBulletMaker(Canvas.GetLeft(player) + 20, 10);
                 Random random = new Random();
-                //EnemyBulletMaker(random.Next(0, 500), random.Next(3, 10));
-                //EnemyBulletMaker(random.Next(0, 500), random.Next(3, 10));
-                //EnemyBulletMaker(random.Next(0, 500), random.Next(3, 10));
+                EnemyBulletMaker(random.Next(0, 500), random.Next(3, 10));
+                EnemyBulletMaker(random.Next(0, 500), random.Next(3, 10));
+                EnemyBulletMaker(random.Next(0, 500), random.Next(3, 10));
                 bulletTimer = bulletTimerLimit;
             }
             foreach (var x in myCanvas.Children.OfType<Rectangle>())
@@ -201,7 +200,7 @@ namespace WpfApp25
             }
         }
 
-        private void EnemyBulletMaker(double x, double y)
+        public void EnemyBulletMaker(double x, double y)
         {
             Rectangle enemyBullet = new Rectangle { Tag = "enemyBullet", Height = 40, Width = 15, Fill = Brushes.Red, Stroke = Brushes.OrangeRed, StrokeThickness = 5 };
             Canvas.SetTop(enemyBullet, y);
@@ -209,7 +208,7 @@ namespace WpfApp25
             myCanvas.Children.Add(enemyBullet);
         }
 
-        private void MakeEnemies(int limit)
+        public void MakeEnemies(int limit)
         {
             int left = 0;
             totalEnemies = limit;
@@ -230,21 +229,21 @@ namespace WpfApp25
                 switch (ImagesOfEnemy)
                 {
                     case 1:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha1.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien1.png", UriKind.Relative));
                         break;
                     case 2:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha21.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien2.png", UriKind.Relative));
                         break;
                     case 3:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha3.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien3.png", UriKind.Relative));
                         break;
                     case 4:
-                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Pasha_4.png", UriKind.Relative));
+                        enemySkin.ImageSource = new BitmapImage(new Uri("Images/Alien4.png", UriKind.Relative));
                         break;
                 }
             }
         }
-        private void ShowGameOver(string message)
+        public void ShowGameOver(string message)
         {
             gameOver = true;
             gameTimer.Stop();

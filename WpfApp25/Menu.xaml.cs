@@ -19,9 +19,14 @@ namespace WpfApp25
     /// </summary>
     public partial class Menu : Window
     {
+        ImageBrush myGridSkin = new ImageBrush();
+
         public Menu()
         {
             InitializeComponent();
+            mygrid.Background = myGridSkin;
+            myGridSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
+            mygrid.Focus();
         }
 
         private void baton_Click(object sender, RoutedEventArgs e)

@@ -16,10 +16,7 @@
                FontWeight="ExtraBold" 
                Content=" Уровень 2. Осталось живых врагов: 0" Grid.Column="0">
             </Label>
-
         </Grid>
-
-
         <Rectangle Name="player" Fill="Gray" Height="65" Width="55" Canvas.Left="381" Canvas.Top="394"/>
     </Canvas>
 </Window>

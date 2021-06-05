@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:WpfApp25"
         mc:Ignorable="d"
         Title="Menu" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid x:Name="mygrid" Focusable="True">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="baton" Content="Игра с другом" Width="100" Height="30" Click="baton_Click" Margin="5" />
             <Button x:Name="SimpleGame" Content="Одиночная игра" Width="100" Height="30" Click="SimpleGame_Click"/>
-            <Button x:Name="BossGame" Content="Большой шлеппа" Width="100" Height="30" Click="BossGame_Click"/>
+            <Button x:Name="BossGame" Content="Большой шлеппа" Width="100" Height="30" Click="BossGame_Click" Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>
