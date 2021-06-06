@@ -47,7 +47,8 @@ namespace WpfApp25
             myCanvas.Background = myCanvasSkin;
             myCanvas.Focus();
             MakeBoss(1);
-
+            progres.Maximum = bossHealth;
+            progres.Value = bossHealth;
         }
 
         private void GameLoop(object sender, EventArgs e)
@@ -95,6 +96,7 @@ namespace WpfApp25
                                 itemsToRemove.Add(x);
                                 itemsToRemove.Add(y);
                                 bossHealth -= 10;
+                                progres.Value = bossHealth;
                             }
 
                         }
