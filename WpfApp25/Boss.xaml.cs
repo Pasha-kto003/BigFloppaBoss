@@ -45,7 +45,9 @@ namespace WpfApp25
             myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
             player.Fill = playerSkin;
             myCanvas.Background = myCanvasSkin;
-            myCanvas.Focus();
+            myCanvas.Focus(); 
+            progres.Maximum = bossHealth;
+            progres.Value = bossHealth;
             MakeBoss(1);
 
         }
@@ -95,6 +97,7 @@ namespace WpfApp25
                                 itemsToRemove.Add(x);
                                 itemsToRemove.Add(y);
                                 bossHealth -= 10;
+                                progres.Value = bossHealth;
                             }
 
                         }
@@ -237,7 +240,7 @@ namespace WpfApp25
             {
                 ImageBrush bossSkin = new ImageBrush();
                 Rectangle newBoss = new Rectangle { Tag = "boss", Height = 100, Width = 200, Fill = bossSkin };
-                Canvas.SetTop(newBoss, 1);
+                Canvas.SetTop(newBoss, 50);
                 Canvas.SetLeft(newBoss, left); //направление большого шлеппы влево и вниз
                 //Canvas.SetRight(newBoss, right);
                 myCanvas.Children.Add(newBoss);

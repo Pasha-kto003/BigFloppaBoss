@@ -17,6 +17,9 @@
                FontWeight="ExtraBold" 
                Content="Босс. Жизни босса" Grid.Column="0">
                 </Label>
+                <ProgressBar HorizontalAlignment="Center" Height="20" Width="400" Margin="180 0 0 0" x:Name="progres" Minimum="0" Foreground="Red"/>
+                <TextBlock Text="{Binding ElementName=progres, Path=Value, StringFormat={}{0:0}/}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200 0 0 0" FontWeight="Bold" />
+                <TextBlock Text="{Binding ElementName=progres, Path=Maximum, StringFormat={}{0:0}}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="260 0 0 0" FontWeight="Bold" />
             </Grid>
             <Rectangle Name="player" Fill="Gray" Height="65" Width="55" Canvas.Left="381" Canvas.Top="394"/>
         </Canvas>
