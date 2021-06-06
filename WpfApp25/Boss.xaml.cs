@@ -22,13 +22,14 @@ namespace WpfApp25
     {
         bool goLeft, goRight;
         List<Rectangle> itemsToRemove = new List<Rectangle>();
-        List<Rectangle> bulletsForBossToRemove = new List<Rectangle>();
         int ImageOfBoss = 0;
         int bulletTimer = 0;
         int bulletTimerLimit = 90;
         int bossSpeed = 6;
         int totalBosses = 1;
+        int totalShields = 2;
         int bossHealth = 1000;
+        int shieldHealth = 200;
         bool gameOver = false;
         DispatcherTimer gameTimer = new DispatcherTimer();
         ImageBrush myCanvasSkin = new ImageBrush();
@@ -42,13 +43,16 @@ namespace WpfApp25
             gameTimer.Start();
             //gameTimer.Stop();
             playerSkin.ImageSource = new BitmapImage(new Uri("Images/MyShip_-3000.png", UriKind.Relative));
-            myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
+            myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/BigFloppanew.png", UriKind.Relative));
             player.Fill = playerSkin;
             myCanvas.Background = myCanvasSkin;
-            myCanvas.Focus();
+            myCanvas.Focus(); 
+            progres.Maximum = bossHealth;
+            progres.Value = bossHealth;
             MakeBoss(1);
             progres.Maximum = bossHealth;
             progres.Value = bossHealth;
+            MakeShield(2);
         }
 
         private void GameLoop(object sender, EventArgs e)
@@ -104,9 +108,7 @@ namespace WpfApp25
                 }
                 if (x is Rectangle && (string)x.Tag == "boss")
                 {
-                    Canvas.SetLeft(x, Canvas.GetLeft(x) + bossSpeed);
-                    
-
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) + bossSpeed);                   
                     if (Canvas.GetLeft(x) > 820) // условие перемещения шлеппы
                     {
                         Canvas.SetLeft(x, -80);
@@ -125,7 +127,14 @@ namespace WpfApp25
                     {
                         ShowGameOver("Пришельцы испепелили вас!!");
                     }
+
+                    Rect shieldHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    if (shieldHitBox.IntersectsWith(bossBulletHitBox)) // касние пули босса щита
+                    {
+                        
+                    }
                 }
+
             }
 
             if (bossHealth < 900)
@@ -224,11 +233,13 @@ namespace WpfApp25
             }
         }
         private void BossBulletMaker(double x, double y)
-        {
-            Rectangle bossBullet = new Rectangle { Tag = "bossBullet", Height = 40, Width = 15, Fill = Brushes.Red, Stroke = Brushes.OrangeRed, StrokeThickness = 5 };
+        {         
+            ImageBrush newBossBullet = new ImageBrush();
+            Rectangle bossBullet = new Rectangle { Tag = "bossBullet", Height = 50, Width = 25, Fill = newBossBullet, StrokeThickness = 5, };
             Canvas.SetTop(bossBullet, y);
             Canvas.SetLeft(bossBullet, x);
             myCanvas.Children.Add(bossBullet);
+            newBossBullet.ImageSource = new BitmapImage(new Uri("Images/BossBullet2.png", UriKind.Relative));
         }
 
         private void MakeBoss(int limit)
@@ -239,12 +250,22 @@ namespace WpfApp25
             {
                 ImageBrush bossSkin = new ImageBrush();
                 Rectangle newBoss = new Rectangle { Tag = "boss", Height = 100, Width = 200, Fill = bossSkin };
-                Canvas.SetTop(newBoss, 1);
-                Canvas.SetLeft(newBoss, left); //направление большого шлеппы влево и вниз
-                //Canvas.SetRight(newBoss, right);
+                Canvas.SetTop(newBoss, 50);
+                Canvas.SetLeft(newBoss, left); //направление большого шлеппы влево
                 myCanvas.Children.Add(newBoss);
                 left -= 1;
                 bossSkin.ImageSource = new BitmapImage(new Uri("Images/bigfloppa.png", UriKind.Relative));
+            }
+        }
+        private void MakeShield(int limitBullet) // попытка создать щит
+        {
+            totalShields = limitBullet;
+            for (int i = 0; i < limitBullet; i++)
+            {
+                Rectangle newShield = new Rectangle { Tag = "shield", Height = 60, Width = 55, Fill = Brushes.Red, Stroke = Brushes.Black };
+                Canvas.SetTop(newShield, 300);
+                Canvas.SetLeft(newShield, 50);
+                myCanvas.Children.Add(newShield);
             }
 
         }
