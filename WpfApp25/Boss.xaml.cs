@@ -226,7 +226,7 @@ namespace WpfApp25
         private void BossBulletMaker(double x, double y)
         {         
             ImageBrush newBossBullet = new ImageBrush();
-            Rectangle bossBullet = new Rectangle { Tag = "bossBullet", Height = 40, Width = 15, Fill = newBossBullet, StrokeThickness = 5, };
+            Rectangle bossBullet = new Rectangle { Tag = "bossBullet", Height = 50, Width = 25, Fill = newBossBullet, StrokeThickness = 5, };
             Canvas.SetTop(bossBullet, y);
             Canvas.SetLeft(bossBullet, x);
             myCanvas.Children.Add(bossBullet);
