@@ -22,7 +22,6 @@ namespace WpfApp25
     {
         bool goLeft, goRight;
         List<Rectangle> itemsToRemove = new List<Rectangle>();
-        List<Rectangle> bulletsForBossToRemove = new List<Rectangle>();
         int ImageOfBoss = 0;
         int bulletTimer = 0;
         int bulletTimerLimit = 90;
@@ -42,7 +41,7 @@ namespace WpfApp25
             gameTimer.Start();
             //gameTimer.Stop();
             playerSkin.ImageSource = new BitmapImage(new Uri("Images/MyShip_-3000.png", UriKind.Relative));
-            myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/SpaceForGame.png", UriKind.Relative));
+            myCanvasSkin.ImageSource = new BitmapImage(new Uri("Images/BigFloppanew.png", UriKind.Relative));
             player.Fill = playerSkin;
             myCanvas.Background = myCanvasSkin;
             myCanvas.Focus(); 
@@ -225,11 +224,13 @@ namespace WpfApp25
             }
         }
         private void BossBulletMaker(double x, double y)
-        {
-            Rectangle bossBullet = new Rectangle { Tag = "bossBullet", Height = 40, Width = 15, Fill = Brushes.Red, Stroke = Brushes.OrangeRed, StrokeThickness = 5 };
+        {         
+            ImageBrush newBossBullet = new ImageBrush();
+            Rectangle bossBullet = new Rectangle { Tag = "bossBullet", Height = 40, Width = 15, Fill = newBossBullet, StrokeThickness = 5, };
             Canvas.SetTop(bossBullet, y);
             Canvas.SetLeft(bossBullet, x);
             myCanvas.Children.Add(bossBullet);
+            newBossBullet.ImageSource = new BitmapImage(new Uri("Images/BossBullet2.png", UriKind.Relative));
         }
 
         private void MakeBoss(int limit)
