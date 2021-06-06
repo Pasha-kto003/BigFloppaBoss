@@ -50,6 +50,8 @@ namespace WpfApp25
             progres.Maximum = bossHealth;
             progres.Value = bossHealth;
             MakeBoss(1);
+            progres.Maximum = bossHealth;
+            progres.Value = bossHealth;
             MakeShield(2);
         }
 
